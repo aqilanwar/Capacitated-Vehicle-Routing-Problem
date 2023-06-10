@@ -6,9 +6,9 @@
             "y": 68.0
         },
         "demand": 10.0,
-        "due_time": 1127.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_10": {
         "coordinates": {
@@ -16,9 +16,9 @@
             "y": 66.0
         },
         "demand": 10.0,
-        "due_time": 1129.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_11": {
         "coordinates": {
@@ -26,29 +26,29 @@
             "y": 69.0
         },
         "demand": 10.0,
-        "due_time": 505.0,
-        "ready_time": 448.0,
-        "service_time": 90.0
+        "due_time": 0.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
     },
     "customer_12": {
         "coordinates": {
             "x": 25.0,
             "y": 85.0
         },
-        "demand": 20.0,
-        "due_time": 1107.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_13": {
         "coordinates": {
             "x": 22.0,
             "y": 75.0
         },
-        "demand": 30.0,
-        "due_time": 92.0,
-        "ready_time": 30.0,
-        "service_time": 90.0
+        "demand": 10.0,
+        "due_time": 0.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
     },
     "customer_14": {
         "coordinates": {
@@ -56,49 +56,49 @@
             "y": 85.0
         },
         "demand": 10.0,
-        "due_time": 1106.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_15": {
         "coordinates": {
             "x": 20.0,
             "y": 80.0
         },
-        "demand": 40.0,
-        "due_time": 429.0,
-        "ready_time": 384.0,
-        "service_time": 90.0
+        "demand": 10.0,
+        "due_time": 0.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
     },
     "customer_16": {
         "coordinates": {
             "x": 20.0,
             "y": 85.0
         },
-        "demand": 40.0,
-        "due_time": 1105.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_17": {
         "coordinates": {
             "x": 18.0,
             "y": 75.0
         },
-        "demand": 20.0,
-        "due_time": 1112.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_18": {
         "coordinates": {
             "x": 15.0,
             "y": 75.0
         },
-        "demand": 20.0,
-        "due_time": 1110.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_19": {
         "coordinates": {
@@ -106,19 +106,19 @@
             "y": 80.0
         },
         "demand": 10.0,
-        "due_time": 1106.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_2": {
         "coordinates": {
             "x": 45.0,
             "y": 70.0
         },
-        "demand": 30.0,
-        "due_time": 1125.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_20": {
         "coordinates": {
@@ -126,29 +126,29 @@
             "y": 50.0
         },
         "demand": 10.0,
-        "due_time": 1136.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_21": {
         "coordinates": {
             "x": 30.0,
             "y": 52.0
         },
-        "demand": 20.0,
-        "due_time": 1135.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_22": {
         "coordinates": {
             "x": 28.0,
             "y": 52.0
         },
-        "demand": 20.0,
-        "due_time": 1133.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_23": {
         "coordinates": {
@@ -156,9 +156,9 @@
             "y": 55.0
         },
         "demand": 10.0,
-        "due_time": 777.0,
-        "ready_time": 732.0,
-        "service_time": 90.0
+        "due_time": 0.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
     },
     "customer_24": {
         "coordinates": {
@@ -166,19 +166,19 @@
             "y": 50.0
         },
         "demand": 10.0,
-        "due_time": 1131.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_25": {
         "coordinates": {
             "x": 25.0,
             "y": 52.0
         },
-        "demand": 40.0,
-        "due_time": 224.0,
-        "ready_time": 169.0,
-        "service_time": 90.0
+        "demand": 10.0,
+        "due_time": 0.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
     },
     "customer_3": {
         "coordinates": {
@@ -186,9 +186,9 @@
             "y": 66.0
         },
         "demand": 10.0,
-        "due_time": 1129.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_4": {
         "coordinates": {
@@ -196,9 +196,9 @@
             "y": 68.0
         },
         "demand": 10.0,
-        "due_time": 782.0,
-        "ready_time": 727.0,
-        "service_time": 90.0
+        "due_time": 0.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
     },
     "customer_5": {
         "coordinates": {
@@ -206,39 +206,39 @@
             "y": 65.0
         },
         "demand": 10.0,
-        "due_time": 1130.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_6": {
         "coordinates": {
             "x": 40.0,
             "y": 69.0
         },
-        "demand": 20.0,
-        "due_time": 1127.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_7": {
         "coordinates": {
             "x": 40.0,
             "y": 66.0
         },
-        "demand": 20.0,
-        "due_time": 1130.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
-        "service_time": 90.0
+        "service_time": 10.0
     },
     "customer_8": {
         "coordinates": {
             "x": 38.0,
             "y": 68.0
         },
-        "demand": 20.0,
-        "due_time": 324.0,
-        "ready_time": 255.0,
-        "service_time": 90.0
+        "demand": 10.0,
+        "due_time": 0.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
     },
     "customer_9": {
         "coordinates": {
@@ -246,17 +246,17 @@
             "y": 70.0
         },
         "demand": 10.0,
-        "due_time": 605.0,
-        "ready_time": 534.0,
-        "service_time": 90.0
+        "due_time": 0.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
     },
     "depart": {
         "coordinates": {
             "x": 40.0,
             "y": 50.0
         },
-        "demand": 0.0,
-        "due_time": 1236.0,
+        "demand": 10.0,
+        "due_time": 0.0,
         "ready_time": 0.0,
         "service_time": 0.0
     },

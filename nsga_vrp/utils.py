@@ -1,7 +1,10 @@
 import os
 import io
 import fnmatch
+import pandas as pd
+import numpy as np
 from json import load, dump
+import json
 
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
@@ -15,6 +18,78 @@ def calculate_distance(customer1, customer2):
     """
     return ((customer1['coordinates']['x'] - customer2['coordinates']['x']) ** 2 + \
             (customer1['coordinates']['y'] - customer2['coordinates']['y']) ** 2) ** 0.5
+
+def convertcsv2json():
+    """
+    Inputs : None
+    Outputs: Reads the *.csv file in text directory and converts in to
+             *.json file in json directory.
+    """
+    print(f'base directory is {BASE_DIR}')
+    text_dir = os.path.join(BASE_DIR, 'data', 'csv')
+    json_dir = os.path.join(BASE_DIR, 'data', 'json')
+    print(f'csv_dir is {text_dir}')
+    print(f'json_dir is {json_dir}')
+
+    #Initialize depot 
+    depot = [2.0439838562244534 , 103.36281663722052]
+
+    #Initialize max vehicle number allowed 
+    max_vehicle_number = 10
+
+    #Initialize max vehicle capacity
+    vehicle_capacity = 70.0
+
+    # Initialize instance name 
+    instance_name = 'Test_Data'
+        
+    data = pd.read_csv("dataset/100.csv")
+    customers_coordinate = data["coordinates"].str.split(",", expand=True).astype(float).to_numpy()
+    
+    total_customer = len(customers_coordinate)
+    # print(len(customers_coordinate))
+    json_data = {}
+
+    json_data['Number_of_customers'] = total_customer
+
+    for i in range (total_customer):
+        json_data[f'customer_{i+1}'] = {
+                            'coordinates': {
+                                'x': customers_coordinate[i][0],
+                                'y': customers_coordinate[i][1],
+                            },
+                            'demand': float(10),
+                            'ready_time': float(10),
+                            'due_time': float(10),
+                            'service_time': float(10),
+                        }
+
+    json_data['depart'] =  {
+        'coordinates': {
+            'x': depot[0] ,
+            'y': depot[1] , 
+        },
+        'demand' :  10.0,
+        'due_time' : 0.0,
+        'ready_time' : 0.0 ,
+        'service_time' : 0.0,
+    }
+
+    json_data['instance_name'] = instance_name
+    json_data['max_vehicle_number'] = int(max_vehicle_number)
+    json_data['vehicle_capacity'] = float(vehicle_capacity)
+
+    # print(json_data)
+    file_path = "data.json"
+
+    with io.open(file_path, "w") as file:
+        json.dump(json_data, file)
+        print('file updated')
+
+    # print(customers_coordinate)
+
+
+    
 
 
 def converttext2json():
