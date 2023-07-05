@@ -5,6 +5,7 @@ def main():
 
     # Parsing arguments
     parser = argparse.ArgumentParser()
+    # parser.add_argument('--instance_name', type=str, default="./data/json/100_Data.json", required=False,
     parser.add_argument('--instance_name', type=str, default="./data/json/Input_Data.json", required=False,
                         help="Enter the input Json file name")
     parser.add_argument('--popSize', type=int, default=400, required=False,

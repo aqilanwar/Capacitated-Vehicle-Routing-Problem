@@ -43,7 +43,9 @@ def plotRoute(route, csv_title):
     json_instance = load_instance('./data/json/Input_Data.json')
 
     subroutes = routeToSubroute(route, json_instance)
-    colorslist = ["blue","green","red","cyan","magenta","yellow","black","#eeefff"]
+    colorslist = ["blue", "green", "red", "cyan", "magenta", "yellow", "black", "#eeefff", "purple", "orange", "pink", "brown", "gray", "lime", "teal", "olive", "navy", "maroon", "aqua", "silver"]
+
+    # colorslist = ["blue","green","red","cyan","magenta","yellow","black","#eeefff"]
     colorindex = 0
 
     # getting df
