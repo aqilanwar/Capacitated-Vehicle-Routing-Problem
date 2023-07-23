@@ -16,10 +16,13 @@ def getCoordinatesDframe(json_instance):
     # Getting depot x,y coordinates
     depot_x = [json_instance['depart']['coordinates']['x']]
     depot_y = [json_instance['depart']['coordinates']['y']]
+    # Getting depot x,y coordinates
+    landfill_x = [json_instance['landfill']['coordinates']['x']]
+    landfill_y = [json_instance['landfill']['coordinates']['y']]
     # Adding depot details
-    customer_list = [0] + customer_list
-    x_coord_cust = depot_x + x_coord_cust
-    y_coord_cust = depot_y + y_coord_cust
+    customer_list = [0] + customer_list + [31]
+    x_coord_cust = depot_x + x_coord_cust + landfill_x
+    y_coord_cust = depot_y + y_coord_cust + landfill_y
     df = pd.DataFrame({"X": x_coord_cust,
                        "Y": y_coord_cust,
                        "customer_list": customer_list
@@ -28,9 +31,9 @@ def getCoordinatesDframe(json_instance):
 
 
 def plotSubroute(subroute, dfhere,color):
-    totalSubroute = [0]+subroute+[0]
+    totalSubroute = [0]+subroute+[31] + [0]
     subroutelen = len(subroute)
-    for i in range(subroutelen+1):
+    for i in range(subroutelen+2):
         firstcust = totalSubroute[0]
         secondcust = totalSubroute[1]
         plt.plot([dfhere.X[firstcust], dfhere.X[secondcust]],
@@ -47,10 +50,9 @@ def plotRoute(route, csv_title):
 
     # colorslist = ["blue","green","red","cyan","magenta","yellow","black","#eeefff"]
     colorindex = 0
-
     # getting df
     dfhere = getCoordinatesDframe(json_instance)
-
+    
     # Plotting scatter
     plt.figure(figsize=(10, 10))
 
@@ -58,6 +60,9 @@ def plotRoute(route, csv_title):
         if i == 0:
             plt.scatter(dfhere.X[i], dfhere.Y[i], c='green', s=200)
             plt.text(dfhere.X[i], dfhere.Y[i], "depot", fontsize=12)
+        elif i == 31:
+            plt.scatter(dfhere.X[i], dfhere.Y[i], c='red', s=200)
+            plt.text(dfhere.X[i], dfhere.Y[i], "landfill", fontsize=12)
         else:
             plt.scatter(dfhere.X[i], dfhere.Y[i], c='orange', s=200)
             plt.text(dfhere.X[i], dfhere.Y[i], f'{i}', fontsize=12)

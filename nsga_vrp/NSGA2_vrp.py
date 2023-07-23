@@ -16,7 +16,6 @@ from deap.benchmarks.tools import diversity, convergence, hypervolume
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 
-
 # Load the given problem, which can be a json file
 def load_instance(json_file):
     """
@@ -71,14 +70,14 @@ def printRoute(route, merge=False):
     sub_route_count = 0
     for sub_route in route:
         sub_route_count += 1
-        sub_route_str = '0'
+        sub_route_str = 'Depot'
         for customer_id in sub_route:
             sub_route_str = f'{sub_route_str} - {customer_id}'
             route_str = f'{route_str} - {customer_id}'
-        sub_route_str = f'{sub_route_str} - 0'
+        sub_route_str = f'{sub_route_str} - Landfill -  Depot'
         if not merge:
             print(f'  Vehicle {sub_route_count}\'s route: {sub_route_str}')
-        route_str = f'{route_str} - 0'
+        route_str = f'{route_str} - Landfill - Depot'
     if merge:
         print(route_str)
 
@@ -123,16 +122,24 @@ def getRouteCost(individual, instance, unit_cost=1):
             # Update last_customer_id to the new one
             last_customer_id = customer_id
         
+        # After adding distances in subroute, adding the distance from the last customer to the landfill
+        # landfill_customer_id = instance["landfill_customer_id"]
+        # sub_route_distance += instance["distance_matrix"][last_customer_id][landfill_customer_id]
+        # sub_route_distance = sub_route_distance + instance["distance_matrix"][last_customer_id][0]
+        # print(instance["distance_matrix"][last_customer_id][0])
+
         # After adding distances in subroute, adding the route cost from last customer to depot
         # that is 0
-        sub_route_distance = sub_route_distance + instance["distance_matrix"][last_customer_id][0]
-
+        sub_route_distance = sub_route_distance + instance["distance_matrix"][last_customer_id][31]
+        sub_route_distance = sub_route_distance + instance["distance_matrix"][31][0]
+        
         # Cost for this particular sub route
         sub_route_transport_cost = unit_cost*sub_route_distance
 
         # Adding this to total cost
+        
         total_cost = total_cost + sub_route_transport_cost
-    
+        # print('Total cost: ', total_cost)    
     return total_cost
 
 
@@ -570,77 +577,3 @@ if __name__ == "__main__":
 
     # someinstance.testFunc()
 
-
-
-
-
-
-# def testcosts():
-#     # Sample instance
-#     test_instance = load_instance('./data/json/Input_Data.json')
-
-#     # Sample individual
-#     sample_individual = [19, 5, 24, 7, 16, 23, 22, 2, 12, 8, 20, 25, 21, 18,11,15, 1, 14, 17, 6, 4, 13, 10, 3, 9]
-
-#     # Sample individual 2
-#     sample_ind_2 = random.sample(sample_individual, len(sample_individual))
-#     print(f"Sample individual is {sample_individual}")
-#     print(f"Sample individual 2 is {sample_ind_2}")
-
-#     # Cost for each route
-#     print(f"Sample individual cost is {getRouteCost(sample_individual, test_instance, 1)}")
-#     print(f"Sample individual 2 cost is {getRouteCost(sample_ind_2, test_instance, 1)}")
-
-#     # Fitness for each route
-#     print(f"Sample individual fitness is {eval_indvidual_fitness(sample_individual, test_instance, 1)}")
-#     print(f"Sample individual 2 fitness is {eval_indvidual_fitness(sample_ind_2, test_instance, 1)}")
-
-# def testroutes():
-#     # Sample instance
-#     test_instance = load_instance('./data/json/Input_Data.json')
-
-#     # Sample individual
-#     sample_individual = [19, 5, 24, 7, 16, 23, 22, 2, 12, 8, 20, 25, 21, 18,11,15, 1, 14, 17, 6, 4, 13, 10, 3, 9]
-#     best_ind_300_gen = [16, 14, 12, 10, 15, 17, 21, 23, 11, 9, 8, 20, 18, 19, 13, 22, 25, 24, 5, 3, 4, 6, 7, 1, 2]
-
-
-#     # Sample individual 2
-#     sample_ind_2 = random.sample(sample_individual, len(sample_individual))
-#     print(f"Sample individual is {sample_individual}")
-#     print(f"Sample individual 2 is {sample_ind_2}")
-#     print(f"Best individual 300 generations is {best_ind_300_gen}")
-
-#     # Getting routes
-#     print(f"Subroutes for first sample individual is {routeToSubroute(sample_individual, test_instance)}")
-#     print(f"Subroutes for second sample indivudal is {routeToSubroute(sample_ind_2, test_instance)}")
-#     print(f"Subroutes for best sample indivudal is {routeToSubroute(best_ind_300_gen, test_instance)}")
-
-#     # Getting num of vehicles
-#     print(f"Vehicles for sample individual {getNumVehiclesRequired(sample_individual, test_instance)}")
-#     print(f"Vehicles for second sample individual {getNumVehiclesRequired(sample_ind_2, test_instance)}")
-#     print(f"Vehicles for best sample individual {getNumVehiclesRequired(best_ind_300_gen, test_instance)}")
-
-# def testcrossover():
-#     ind1 = [3,2,5,1,6,9,8,7,4]
-#     ind2 = [7,3,6,1,9,2,4,5,8]
-#     anotherind1 = [16, 14, 12, 7, 4, 2, 1, 13, 15, 8, 9, 6, 3, 5, 17, 18, 19, 11, 10, 21, 22, 23, 25, 24, 20]
-#     anotherind2 = [21, 22, 23, 25,16, 14, 12, 7, 4, 2, 1, 13, 15, 8, 9, 6, 3, 5, 17, 18, 19, 11, 10, 24, 20]
-
-
-#     newind7, newind8 = cxOrderedVrp(ind1, ind2)
-#     newind9, newind10 = cxOrderedVrp(anotherind1, anotherind2)
-
-#     print(f"InpInd1 is {ind1}")
-#     print(f"InpInd2 is {ind2}")
-#     # print(f"New_ind is {[x-1 for x in ind1]}")
-#     print(f"newind7 is {newind7}")
-#     print(f"newind8 is {newind8}")
-#     print(f"newind9 is {newind9}")
-#     print(f"newind10 is {newind10}")
-
-# def testmutation():
-#     ind1 = [3,2,5,1,6,9,8,7,4]
-#     mut1 = mutationShuffle(ind1)
-
-#     print(f"Given individual is {ind1}")
-#     print(f"Mutation from first method {mut1}")
