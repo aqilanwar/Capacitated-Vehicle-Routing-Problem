@@ -41,7 +41,7 @@ def calculate_distance_matrix(customer1, customer2):
     print(distance/1000)
     return (distance / 1000)
 
-def convertcsv2json():
+def convertcsv2json(csv_path):
     """
     Inputs : None
     Outputs: Reads the *.csv file in text directory and converts in to
@@ -55,9 +55,11 @@ def convertcsv2json():
 
     #Initialize depot 
     depot = [2.0439838562244534 , 103.36281663722052]
+    address_depot = "SWM Environment, Lot 4836MK, Jalan Padang Tembak, 86000 Kluang, Johor"
 
     #Initialize landfill
     landfill = [1.7802932217578695, 103.87691425955107]
+    address_landfill = "Tapak Pelupusan Sisa Pepejal, 91, Mukim, 81900 Kota Tinggi, Johor"
     
 
     #Initialize max vehicle number allowed 
@@ -67,12 +69,14 @@ def convertcsv2json():
     vehicle_capacity = 15000.0
 
     # Initialize instance name 
-    instance_name = 'Test'
+    instance_name = 'Input_Data'
         
-    data = pd.read_csv("dataset/Data.csv")
+    # data = pd.read_csv("dataset/Data.csv")
+    data = pd.read_csv(csv_path)
     customers_coordinate = data["coordinates"].str.split(",", expand=True).astype(float).to_numpy()
     demand = data["demand"].astype(float).to_numpy()
-    
+    address = data["address"] 
+
     total_customer = len(customers_coordinate)
     # print(len(customers_coordinate))
     json_data = {}
@@ -83,8 +87,8 @@ def convertcsv2json():
 
     print(customers_coordinate)
 
-    for i in range (total_customer):
-         print(demand[i])
+    # for i in range (total_customer):
+    #      print(demand[i])
     for i in range (total_customer):
         json_data[f'customer_{i+1}'] = {
                             'coordinates': {
@@ -94,7 +98,8 @@ def convertcsv2json():
                             'demand': demand[i],
                             'ready_time': float(0),
                             'due_time': float(0),
-                            'service_time': float(10),
+                            'service_time': float(0),
+                            'address': address[i],
                         }
 
     json_data['depart'] =  {
@@ -106,6 +111,7 @@ def convertcsv2json():
         'due_time' : 0.0,
         'ready_time' : 0.0 ,
         'service_time' : 0.0,
+        'address': address_depot
     }
     json_data['landfill'] =  {
         'coordinates': {
@@ -116,6 +122,7 @@ def convertcsv2json():
         'due_time' : 0.0,
         'ready_time' : 0.0 ,
         'service_time' : 0.0,
+        'address': address_landfill
     }
     # print(f'Number of customers is {numCustomers}')
     customers = ['depart'] + [f'customer_{x}' for x in range(1, total_customer + 1)] + ['landfill']
@@ -145,99 +152,11 @@ def convertcsv2json():
         json.dump(json_data, file)
         
         print('file updated')
+        # Save the printed details to a JSON file
 
-    # print(customers_coordinate)
-
-# def converttext2json():
-#     """
-#     Inputs : None
-#     Outputs: Reads the *.txt file in text directory and converts in to
-#              *.json file in json directory.
-#     """
-#     print(f'base directory is {BASE_DIR}')
-#     text_dir = os.path.join(BASE_DIR, 'data', 'text')
-#     json_dir = os.path.join(BASE_DIR, 'data', 'json')
-#     print(f'text_dir is {text_dir}')
-#     print(f'json_dir is {json_dir}')
-
-#     for text_file in map(lambda text_filename: os.path.join(text_dir, text_filename), \
-#                          fnmatch.filter(os.listdir(text_dir), '*.txt')):
-#         print(text_file)
-#         json_data = {}
-#         numCustomers = 0
-#         with io.open(text_file, 'rt', newline='') as file_object:
-#             for line_count, line in enumerate(file_object, start=1):
-#                 # print(f'line_count is {line_count}')
-#                 # print(f'line is {line}')
-
-#                 if line_count in [2, 3, 4, 6, 7, 8, 9]:
-#                     pass
-
-#                 # Instance name details, input text file name
-#                 elif line_count == 1:
-#                     json_data['instance_name'] = line.strip()
-
-#                 # Vehicle capacity and max vehicles details
-#                 elif line_count == 5:
-#                     values = line.strip().split()
-#                     json_data['max_vehicle_number'] = int(values[0])
-#                     json_data['vehicle_capacity'] = float(values[1])
-
-#                 # Depot details
-#                 elif line_count == 10:
-#                     # This is depot
-#                     values = line.strip().split()
-#                     json_data['depart'] = {
-#                         'coordinates': {
-#                             'x': float(values[1]),
-#                             'y': float(values[2]),
-#                         },
-#                         'demand': float(values[3]),
-#                         'ready_time': float(values[4]),
-#                         'due_time': float(values[5]),
-#                         'service_time': float(values[6]),
-#                     }
-
-#                 # Customer details
-#                 else:
-#                     # Rest all are customers
-#                     # print(f'line_count is {line_count}')
-#                     # print(f'line is {line}')
-#                     # Adding customer to number of customers
-#                     numCustomers += 1
-#                     values = line.strip().split()
-#                     json_data[f'customer_{values[0]}'] = {
-#                         'coordinates': {
-#                             'x': float(values[1]),
-#                             'y': float(values[2]),
-#                         },
-#                         'demand': float(values[3]),
-#                         'ready_time': float(values[4]),
-#                         'due_time': float(values[5]),
-#                         'service_time': float(values[6]),
-#                     }
-
-#         # print(f'Number of customers is {numCustomers}')
-#         customers = ['depart'] + [f'customer_{x}' for x in range(1, numCustomers + 1) ] + ['landfill']
-#         # print(customers)
-
-#         # Writing the distance_matrix
-#         json_data['distance_matrix'] = [[calculate_distance(json_data[customer1], \
-#                                                             json_data[customer2]) for customer1 in customers] for
-#                                         customer2 in customers]
-
-#         # Writing the number of customers details
-#         json_data['Number_of_customers'] = numCustomers
-
-#         # Giving filename as instance name, which is input text file name
-#         json_file_name = f"{json_data['instance_name']}.json"
-#         json_file = os.path.join(json_dir, json_file_name)
-#         print(f'Write to file: {json_file}')
-
-#         # Writing the json file to disk and saving it under json_customize directory
-#         with io.open(json_file, 'wt', newline='') as file_object:
-#             dump(json_data, file_object, sort_keys=True, indent=4, separators=(',', ': '))
+    with open("static/Input_Data.json", "w") as file:
+        json.dump(json_data, file, indent=4)
 
 
 if __name__ == "__main__":
-    converttext2json()
+    convertcsv2json()

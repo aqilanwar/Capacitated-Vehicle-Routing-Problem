@@ -1,0 +1,34 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    min-height: 200px;
+}
+
+/* Custom CSS for the landing page */
+#landing{
+    background: linear-gradient(to right, #8a2be2, #9b59b6);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#landing-container {
+    text-align: center;
+}
+
+#landing-heading {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+#btn-primary {
+    background-color: #fff;
+    color: #8a2be2;
+    border-color: #fff;
+}

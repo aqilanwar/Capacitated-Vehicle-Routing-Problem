@@ -1,0 +1,241 @@
+clear
+source env/bin/activate
+
+">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-md">
+        <a class="navbar-brand" href="#">Route Optimization For Waste Collection</a>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary mt-3">Select CSV</button>
+          </div>
+          <h1 class="text-primary pt-5 py-5">Depot and landfill location</h1>
+          <div class="card mt-3">
+            <div class="card-body">
+              <h5 class="card-title">Depot</h5>
+              <p class="card-text">SWM Environment, Lot 4836MK, Jalan Padang Tembak, 86000 Kluang, Johor</p>
+              <p class="card-text">Coordinates: 2.0439838562244534 , 103.36281663722052</p>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Landfill</h5>
+              <p class="card-text">Tapak Pelupusan Sisa Pepejal, 91, Mukim, 81900 Kota Tinggi, Johor</p>
+              <p class="card-text">Coordinates: 1.7802932217578695, 103.87691425955107</p>
+            </div>
+          </div>
+          
+      <h1 class="text-primary pt-5">Customer Location</h1>
+        <div class="card mt-3 p-4">
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Location</th>
+                <th scope="col">Coordinates</th>
+                <th scope="col">Load (kg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Kluang Meteorological Office, Kluang, Johor</td>
+                <td>2.0152611863635235, 103.3170412515875</td>
+                <td>3437</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jalan Mengkibol Health Clinic,  Kluang, Johor </td>
+                <td>2.007137483176539, 103.32188085135122</td>
+                <td>2261</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Kluang Country Club, Jalan Mengkibol, Taman Sunrise, 86000 Kluang, Johor</td>
+                <td>2.0154603763554824, 103.31821000406603</td>
+                <td>2364</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Kuarters Guru SMK Jalan Mengkibol, Jalan Mengkibol, 86000, Kluang, Johor</td>
+                <td>1.9956843283175765, 103.32181389897033</td>
+                <td>1878</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>SMK Jalan Mengkibol, Jalan Mengkibol, 86000, Kluang, Johor</td>
+                <td>2.0147728017706523, 103.31992489092632</td>
+                <td>1991</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <h1 class="text-primary pt-5">Result </h1>
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Best Individuals is</h5>
+          <div class="alert alert-success" role="alert">
+
+            <p class="card-text">[21, 25, 16, 20, 15, 14, 6, 4, 28, 26, 2, 3, 5, 7, 9, 23, 13, 19, 18, 29, 27, 30, 17, 8, 10, 12, 11, 24, 22, 1]</p>
+            </div>  
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Number of vehicles required are</h5>
+          <div class="alert alert-success" role="alert">
+
+          <p class="card-text">4</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Best distance for the whole route is</h5>
+          <div class="alert alert-success" role="alert">
+
+          <p class="card-text">813.601 km</p>
+          </div>    
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Truck 1's route</h5>
+          <div class="alert alert-success" role="alert">
+
+          <p class="card-text">[Depot - 21 - 25 - 16 - 20 - 15 - 14 - 6 - 4 - Landfill -  Depot]</p>
+          </div>
+          <h5 class="card-title">Truck 2's route</h5>
+          <div class="alert alert-success" role="alert">
+
+          <p class="card-text">[Depot - 28 - 26 - 2 - 3 - 5 - 7 - Landfill -  Depot]</p>
+          </div>
+          <h5 class="card-title">Truck 3's route</h5>
+          <div class="alert alert-success" role="alert">
+
+          <p class="card-text">[Depot - 9 - 23 - 13 - 19 - 18 - 29 - 27 - 30 - 17 - Landfill -  Depot]</p>
+          </div>
+          <h5 class="card-title">Truck 4's route</h5>
+          <div class="alert alert-success" role="alert">
+
+          <p class="card-text">[Depot - 8 - 10 - 12 - 11 - 24 - 22 - 1 - Landfill -  Depot]</p>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3 p-4">
+          <h5 class="pt-2">Route detail: Truck 1 </h5>
+          <div class="pt-2">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Coordinates</th>
+                    <th scope="col">Total load carry (kg)</th>
+                    <th scope="col">Distance travelled (km)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td style="max-width: 300px;">[Depot] SWM Environment, Lot 4836MK, Jalan Padang Tembak, 86000 Kluang, Johor</td>
+                    <td>2.0439838562244534 , 103.36281663722052</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td style="max-width: 300px;">[Customer 1] Kluang Meteorological Office, Kluang, Johor</td>
+                    <td>2.0152611863635235, 103.3170412515875	</td>
+                    <td>3437</td>
+                    <td>8.9</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td style="max-width: 300px;">[Customer 3] Kluang Country Club, Jalan Mengkibol, Taman Sunrise, 86000 Kluang, Johor	</td>
+                    <td>2.0154603763554824, 103.31821000406603</td>
+                    <td>5925</td>
+                    <td>18.9</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+          </div>
+          <h5 class="pt-5">Route detail: Truck 2 </h5>
+          <div class="pt-2">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Coordinates</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Kluang Meteorological Office, Kluang, Johor</td>
+                    <td>2.0152611863635235, 103.3170412515875</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+          </div>
+          <h5 class="pt-5">Route detail: Truck 3 </h5>
+          <div class="pt-2">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Coordinates</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Kluang Meteorological Office, Kluang, Johor</td>
+                    <td>2.0152611863635235, 103.3170412515875</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+          </div>
+          <h5 class="pt-5">Route detail: Truck 4 </h5>
+          <div class="pt-2">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Coordinates</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Kluang Meteorological Office, Kluang, Johor</td>
+                    <td>2.0152611863635235, 103.3170412515875</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+          </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

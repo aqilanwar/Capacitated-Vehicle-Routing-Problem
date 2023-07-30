@@ -6,7 +6,7 @@ import numpy
 import fnmatch
 import csv
 import array
-
+import json
 from csv import DictWriter
 from json import load, dump
 from deap import base, creator, tools, algorithms, benchmarks
@@ -374,6 +374,12 @@ class nsgaAlgo(object):
     def getBestInd(self):
         self.best_individual = tools.selBest(self.pop, 1)[0]
 
+        best_info = {
+            "best_individual": str(self.best_individual),
+            "num_vehicles": self.best_individual.fitness.values[0],
+            "best_distance": self.best_individual.fitness.values[1]
+        }
+
         # Printing the best after all generations
         print(f"Best individual is {self.best_individual}")
         print(f"Number of vechicles required are "
@@ -384,7 +390,16 @@ class nsgaAlgo(object):
               )
 
         # Printing the route from the best individual
+        route_info = routeToSubroute(self.best_individual, self.json_instance)
+        # printRoute(route_info)
+
+        # Printing the route from the best individual
         printRoute(routeToSubroute(self.best_individual, self.json_instance))
+        best_info["route_info"] = route_info
+
+            # Save the printed details to a JSON file
+        with open("static/Training_Result.json", "w") as json_file:
+            json.dump(best_info, json_file, indent=4)
 
     def doExport(self):
         csv_file_name = f"{self.json_instance['instance_name']}_" \
