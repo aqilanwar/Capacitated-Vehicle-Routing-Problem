@@ -95,7 +95,7 @@ function initMap(data) {
   
   }
 
-  function subRoute() {
+function subRoute() {
     let input_data;
   
     // Fetch the data from Input_Data.json
@@ -118,6 +118,12 @@ function initMap(data) {
                 locations: [],
               };
   
+              // Add the "Depot" as the starting location
+              routeWithLoadTracker.locations.push({
+                customerDetails: input_data.depart,
+                load_tracker: 0,
+              });
+  
               route.forEach((customerNumber) => {
                 const customerDetail = input_data[`customer_${customerNumber}`];
                 routeWithLoadTracker.load_tracker += customerDetail.demand;
@@ -127,71 +133,80 @@ function initMap(data) {
                 });
               });
   
-              // Display the route details for each route
-              displayRouteDetails(routeWithLoadTracker, index + 1);
+              // Add the "Landfill" as the last location with load_tracker set to 0
+              routeWithLoadTracker.locations.push({
+                customerDetails: input_data.landfill,
+                load_tracker: 0,
+              });
   
+              // Add the "Depot" after the "Landfill" visit
+              routeWithLoadTracker.locations.push({
+                customerDetails: input_data.depart,
+                load_tracker: 0,
+              });
+  
+              // Display the route details for each route
+              console.log(routeWithLoadTracker)
               return routeWithLoadTracker;
             });
           });
       });
-  }
-function displayRouteDetails(routeData, routeNumber) {
-  const pillsTab = document.getElementById("pills-tab");
-  const pillsTabContent = document.getElementById("pills-tabContent");
-
-  // Create the tab for the route
-  const tabItem = document.createElement("li");
-  tabItem.classList.add("nav-item");
-  tabItem.innerHTML = `
-    <button class="nav-link${routeNumber === 1 ? " active" : ""}" id="pills-tab-${routeNumber}" data-bs-toggle="pill" data-bs-target="#pills-route-${routeNumber}" type="button" role="tab" aria-controls="pills-route-${routeNumber}" aria-selected="${routeNumber === 1 ? "true" : "false"}">Truck ${routeNumber}</button>
-  `;
-  pillsTab.appendChild(tabItem);
-
-  // Create the tab content for the route
-  const tabContent = document.createElement("div");
-  tabContent.classList.add("tab-pane", "fade");
-  if (routeNumber === 1) {
-    tabContent.classList.add("show", "active");
-  }
-  tabContent.id = `pills-route-${routeNumber}`;
-  tabContent.setAttribute("role", "tabpanel");
-  tabContent.setAttribute("aria-labelledby", `pills-tab-${routeNumber}`);
-
-  // Create the table for the route details
-  const table = document.createElement("table");
-  table.classList.add("table", "table-hover");
-  table.innerHTML = `
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Location</th>
-        <th scope="col">Coordinates</th>
-        <th scope="col">Total load carry (kg)</th>
-        <th scope="col">Distance travelled (km)</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${routeData.locations
-        .map(
-          (location, index) => `
-          <tr>
-            <th scope="row">${index + 1}</th>
-            <td style="max-width: 300px;">[${index === 0 ? "Depot" : `Customer ${index}`}] ${location.customerDetails.address}</td>
-            <td>${location.customerDetails.coordinates.x}, ${location.customerDetails.coordinates.y}</td>
-            <td>${location.load_tracker}</td>
-            <td>${location.customerDetails.distance_travelled || 0}</td>
-          </tr>
-        `
-        )
-        .join("")}
-    </tbody>
-  `;
-
-  tabContent.appendChild(table);
-  pillsTabContent.appendChild(tabContent);
 }
 
+// Function to fetch the distance matrix and display it in a table
+function displayDistanceMatrix() {
+    // Fetch the data from Input_Data.json
+    fetch("static/Input_Data.json")
+      .then((response) => response.json())
+      .then((data) => {
+        // Get the distance_matrix from the data
+        const distanceMatrix = data.distance_matrix;
   
+        // Create the table element
+        const table = document.createElement("table");
+        table.classList.add("table", "table-hover");
+  
+        // Create the table header row
+        const thead = document.createElement("thead");
+        const headerRow = document.createElement("tr");
+        headerRow.innerHTML = "<th>Location</th>";
+  
+        // Add column headers (location indices)
+        for (let i = 0; i < distanceMatrix.length; i++) {
+          headerRow.innerHTML += `<th>${i}</th>`;
+        }
+  
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+  
+        // Create the table body and add rows for each location
+        const tbody = document.createElement("tbody");
+        for (let i = 0; i < distanceMatrix.length; i++) {
+          const row = document.createElement("tr");
+          row.innerHTML = `<td>${i}</td>`;
+  
+          // Add the distances from this location to other locations
+          for (let j = 0; j < distanceMatrix[i].length; j++) {
+            row.innerHTML += `<td>${distanceMatrix[i][j]}</td>`;
+          }
+  
+          tbody.appendChild(row);
+        }
+  
+        table.appendChild(tbody);
+  
+        // Add the table to the HTML document
+        const tableContainer = document.getElementById("distanceMatrixContainer");
+        const tableWrapper = document.createElement("div");
+        tableWrapper.classList.add("table-responsive");
+        tableWrapper.style.overflowX = "auto"; // Add the overflow style here
+        tableWrapper.appendChild(table);
+        tableContainer.appendChild(tableWrapper);
+      })
+      .catch((error) => console.error("Error fetching distance matrix:", error));
+  }
+
+
 // Fetch the data from Input_Data.json
 fetch("static/Input_Data.json")
   .then((response) => response.json())
@@ -215,7 +230,7 @@ fetch("static/Input_Data.json")
 
   });
 
-  // Fetch the data from Input_Data.json
+// Fetch the data from Input_Data.json
 fetch("static/Training_Result.json")
 .then((response) => response.json())
 .then((data) => {
@@ -224,3 +239,4 @@ fetch("static/Training_Result.json")
 });
 
 subRoute()
+displayDistanceMatrix()

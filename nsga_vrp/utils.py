@@ -100,6 +100,7 @@ def convertcsv2json(csv_path):
                             'due_time': float(0),
                             'service_time': float(0),
                             'address': address[i],
+                            'location_tracker' : i+1
                         }
 
     json_data['depart'] =  {
@@ -111,7 +112,9 @@ def convertcsv2json(csv_path):
         'due_time' : 0.0,
         'ready_time' : 0.0 ,
         'service_time' : 0.0,
-        'address': address_depot
+        'address': address_depot,
+        'location_tracker' : 0
+
     }
     json_data['landfill'] =  {
         'coordinates': {
@@ -122,7 +125,9 @@ def convertcsv2json(csv_path):
         'due_time' : 0.0,
         'ready_time' : 0.0 ,
         'service_time' : 0.0,
-        'address': address_landfill
+        'address': address_landfill,
+        'location_tracker' : 31
+
     }
     # print(f'Number of customers is {numCustomers}')
     customers = ['depart'] + [f'customer_{x}' for x in range(1, total_customer + 1)] + ['landfill']

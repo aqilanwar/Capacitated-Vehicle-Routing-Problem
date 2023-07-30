@@ -9,7 +9,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Kluang Meteorological Office, Kluang, Johor"
+        "address": "Kluang Meteorological Office, Kluang, Johor",
+        "location_tracker": 1
     },
     "customer_2": {
         "coordinates": {
@@ -20,7 +21,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Jalan Mengkibol Health Clinic,  Kluang, Johor"
+        "address": "Jalan Mengkibol Health Clinic,  Kluang, Johor",
+        "location_tracker": 2
     },
     "customer_3": {
         "coordinates": {
@@ -31,7 +33,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Kluang Country Club, Jalan Mengkibol, Taman Sunrise, 86000 Kluang, Johor"
+        "address": "Kluang Country Club, Jalan Mengkibol, Taman Sunrise, 86000 Kluang, Johor",
+        "location_tracker": 3
     },
     "customer_4": {
         "coordinates": {
@@ -42,7 +45,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Kuarters Guru SMK Jalan Mengkibol, Jalan Mengkibol, 86000, Kluang, Johor"
+        "address": "Kuarters Guru SMK Jalan Mengkibol, Jalan Mengkibol, 86000, Kluang, Johor",
+        "location_tracker": 4
     },
     "customer_5": {
         "coordinates": {
@@ -53,7 +57,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "SMK Jalan Mengkibol, Jalan Mengkibol, 86000, Kluang, Johor"
+        "address": "SMK Jalan Mengkibol, Jalan Mengkibol, 86000, Kluang, Johor",
+        "location_tracker": 5
     },
     "customer_6": {
         "coordinates": {
@@ -64,7 +69,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Kolej Vokasional Kluang, Jalan Mengkibol, 86000, Kluang, Johor"
+        "address": "Kolej Vokasional Kluang, Jalan Mengkibol, 86000, Kluang, Johor",
+        "location_tracker": 6
     },
     "customer_7": {
         "coordinates": {
@@ -75,7 +81,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Wisma Belia Bell, Jalan Mengkibol, 86000, Kluang, Johor"
+        "address": "Wisma Belia Bell, Jalan Mengkibol, 86000, Kluang, Johor",
+        "location_tracker": 7
     },
     "customer_8": {
         "coordinates": {
@@ -86,7 +93,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "SMK Seri Sembrong, Jalan Mersing, 86000, Kluang, Johor"
+        "address": "SMK Seri Sembrong, Jalan Mersing, 86000, Kluang, Johor",
+        "location_tracker": 8
     },
     "customer_9": {
         "coordinates": {
@@ -97,7 +105,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Pusat Latihan Jabatan Kemajuan Orang Asli Malaysia, Kluang, 86000"
+        "address": "Pusat Latihan Jabatan Kemajuan Orang Asli Malaysia, Kluang, 86000",
+        "location_tracker": 9
     },
     "customer_10": {
         "coordinates": {
@@ -108,7 +117,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Kompleks Penjara Kg Gajah, 86000, Kluang Johor"
+        "address": "Kompleks Penjara Kg Gajah, 86000, Kluang Johor",
+        "location_tracker": 10
     },
     "customer_11": {
         "coordinates": {
@@ -119,7 +129,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Pusat Latihan Pertahanan Awam Wilayah Selatan (PULAPAS),86000, Kluang, Johor"
+        "address": "Pusat Latihan Pertahanan Awam Wilayah Selatan (PULAPAS),86000, Kluang, Johor",
+        "location_tracker": 11
     },
     "customer_12": {
         "coordinates": {
@@ -130,7 +141,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Klinik Desa Kahang Batu 28, Jalan Mersing, 86000, Kluang, Johor"
+        "address": "Klinik Desa Kahang Batu 28, Jalan Mersing, 86000, Kluang, Johor",
+        "location_tracker": 12
     },
     "customer_13": {
         "coordinates": {
@@ -141,7 +153,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "SMK Seri Perdana, 4, J191, Kampung Pelimbang, 86000 Kluang, Johor"
+        "address": "SMK Seri Perdana, 4, J191, Kampung Pelimbang, 86000 Kluang, Johor",
+        "location_tracker": 13
     },
     "customer_14": {
         "coordinates": {
@@ -152,7 +165,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Klinik Desa Niyor, Jalan Kampung Melayu Niyor, Kampung Melayu Niyor, 86000, Kluang, Johor\t"
+        "address": "Klinik Desa Niyor, Jalan Kampung Melayu Niyor, Kampung Melayu Niyor, 86000, Kluang, Johor\t",
+        "location_tracker": 14
     },
     "customer_15": {
         "coordinates": {
@@ -163,7 +177,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Sekolah Kebangsaan Kampung Melayu Niyor, Kampung Melayu Niyor, Johor, 86000 Kluang"
+        "address": "Sekolah Kebangsaan Kampung Melayu Niyor, Kampung Melayu Niyor, Johor, 86000 Kluang",
+        "location_tracker": 15
     },
     "customer_16": {
         "coordinates": {
@@ -174,7 +189,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Pejabat Agama Islam Daerah Kluang, Aras 2, Jalan Pejabat Kerajaan, 86000, Kluang, Johor, 86000 Kluang"
+        "address": "Pejabat Agama Islam Daerah Kluang, Aras 2, Jalan Pejabat Kerajaan, 86000, Kluang, Johor, 86000 Kluang",
+        "location_tracker": 16
     },
     "customer_17": {
         "coordinates": {
@@ -185,7 +201,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Pentadbiran Tanah, Pejabat Tanah Kluang, 86000, Kluang, Johor"
+        "address": "Pentadbiran Tanah, Pejabat Tanah Kluang, 86000, Kluang, Johor",
+        "location_tracker": 17
     },
     "customer_18": {
         "coordinates": {
@@ -196,7 +213,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Kluang Courthouse, Jalan Pejabat Kerajaan 2, Kompleks Pejabat-pejabat Kerajaan, 86000 Kluang, Johor"
+        "address": "Kluang Courthouse, Jalan Pejabat Kerajaan 2, Kompleks Pejabat-pejabat Kerajaan, 86000 Kluang, Johor",
+        "location_tracker": 18
     },
     "customer_19": {
         "coordinates": {
@@ -207,7 +225,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Perpustakaan Awam, Majlis Perbandaran Kluang, 86000, Kluang, Johor"
+        "address": "Perpustakaan Awam, Majlis Perbandaran Kluang, 86000, Kluang, Johor",
+        "location_tracker": 19
     },
     "customer_20": {
         "coordinates": {
@@ -218,7 +237,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Pusat Perniagaan Tasik, Jalan Tasik 1, 86000, Kluang, Johor"
+        "address": "Pusat Perniagaan Tasik, Jalan Tasik 1, 86000, Kluang, Johor",
+        "location_tracker": 20
     },
     "customer_21": {
         "coordinates": {
@@ -229,7 +249,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "SK Sultan Sir Ibrahim, Jalan Mersing, 86000 Kluang, Johor"
+        "address": "SK Sultan Sir Ibrahim, Jalan Mersing, 86000 Kluang, Johor",
+        "location_tracker": 21
     },
     "customer_22": {
         "coordinates": {
@@ -240,7 +261,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Sekolah Agama Bandar Kluang, Jalan Hospital, Taman Kem Mahkota, 86000, Kluang, Johor"
+        "address": "Sekolah Agama Bandar Kluang, Jalan Hospital, Taman Kem Mahkota, 86000, Kluang, Johor",
+        "location_tracker": 22
     },
     "customer_23": {
         "coordinates": {
@@ -251,7 +273,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Pasar Awam, Jalan Berangan, Kawasan Pasar, 86000, Kluang, Johor"
+        "address": "Pasar Awam, Jalan Berangan, Kawasan Pasar, 86000, Kluang, Johor",
+        "location_tracker": 23
     },
     "customer_24": {
         "coordinates": {
@@ -262,7 +285,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Kuarters Kolej Jururawat Kluang, Jalan Hospital, Pusat Bandar, 86000, Kluang, Johor"
+        "address": "Kuarters Kolej Jururawat Kluang, Jalan Hospital, Pusat Bandar, 86000, Kluang, Johor",
+        "location_tracker": 24
     },
     "customer_25": {
         "coordinates": {
@@ -273,7 +297,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "SMK Tinggi Kluang, Jalan Sekolah, Pusat Bandar, 86000, Kluang, Johor"
+        "address": "SMK Tinggi Kluang, Jalan Sekolah, Pusat Bandar, 86000, Kluang, Johor",
+        "location_tracker": 25
     },
     "customer_26": {
         "coordinates": {
@@ -284,7 +309,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "SK Lelaki Bandar, Jalan Sekolah, Pusat Bandar, 86000, Kluang, Johor"
+        "address": "SK Lelaki Bandar, Jalan Sekolah, Pusat Bandar, 86000, Kluang, Johor",
+        "location_tracker": 26
     },
     "customer_27": {
         "coordinates": {
@@ -295,7 +321,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "SMK Canossian Convent, Jalan Batu Pahat, 86000, Kluang, Johor"
+        "address": "SMK Canossian Convent, Jalan Batu Pahat, 86000, Kluang, Johor",
+        "location_tracker": 27
     },
     "customer_28": {
         "coordinates": {
@@ -306,7 +333,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Flat Haji Manan, Kampung Masjid Lama, 86000, Kluang, Johor"
+        "address": "Flat Haji Manan, Kampung Masjid Lama, 86000, Kluang, Johor",
+        "location_tracker": 28
     },
     "customer_29": {
         "coordinates": {
@@ -317,7 +345,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Flat Taman Sri Kluang, Jalan 3/25, Taman Sri Kluang, 86000, Kluang, Johor"
+        "address": "Flat Taman Sri Kluang, Jalan 3/25, Taman Sri Kluang, 86000, Kluang, Johor",
+        "location_tracker": 29
     },
     "customer_30": {
         "coordinates": {
@@ -328,7 +357,8 @@
         "ready_time": 0.0,
         "due_time": 0.0,
         "service_time": 0.0,
-        "address": "Rumah Pangsa Kerajaan, Taman Bersatu, 86000 Kluang, Johor"
+        "address": "Rumah Pangsa Kerajaan, Taman Bersatu, 86000 Kluang, Johor",
+        "location_tracker": 30
     },
     "depart": {
         "coordinates": {
@@ -339,7 +369,8 @@
         "due_time": 0.0,
         "ready_time": 0.0,
         "service_time": 0.0,
-        "address": "SWM Environment, Lot 4836MK, Jalan Padang Tembak, 86000 Kluang, Johor"
+        "address": "SWM Environment, Lot 4836MK, Jalan Padang Tembak, 86000 Kluang, Johor",
+        "location_tracker": 0
     },
     "landfill": {
         "coordinates": {
@@ -350,7 +381,8 @@
         "due_time": 0.0,
         "ready_time": 0.0,
         "service_time": 0.0,
-        "address": "Tapak Pelupusan Sisa Pepejal, 91, Mukim, 81900 Kota Tinggi, Johor"
+        "address": "Tapak Pelupusan Sisa Pepejal, 91, Mukim, 81900 Kota Tinggi, Johor",
+        "location_tracker": 31
     },
     "distance_matrix": [
         [
