@@ -103,6 +103,7 @@ function subRoute() {
       .then((response) => response.json())
       .then((data) => {
         input_data = data;
+        distance_matrix = data.distance_matrix;
       })
       .then(() => {
         // Fetch the data from Training_Result.json
@@ -110,7 +111,6 @@ function subRoute() {
           .then((response) => response.json())
           .then((data) => {
             const training_result = data;
-  
             // Match each route to the customer details and calculate load_tracker
             const matchedRoutesWithLoad = training_result.route_info.map((route, index) => {
               const routeWithLoadTracker = {
@@ -146,13 +146,112 @@ function subRoute() {
               });
   
               // Display the route details for each route
-              console.log(routeWithLoadTracker)
+              calculateDistanceMatrix(routeWithLoadTracker, distance_matrix);
+              displayTable(routeWithLoadTracker, index + 1);
+
               return routeWithLoadTracker;
             });
           });
       });
 }
 
+function calculateDistanceMatrix(routeWithLoadTracker, distance_matrix) {
+    console.log('Started')
+    var calculate_distance = 0;
+    var total_distance = 0;
+  
+    for (let i = 0; i < routeWithLoadTracker.locations.length; i++) {
+        console.log(i)
+      if (i < routeWithLoadTracker.locations.length - 1) {
+        calculate_distance =
+          distance_matrix[routeWithLoadTracker.locations[i].customerDetails.location_tracker][
+            routeWithLoadTracker.locations[i + 1].customerDetails.location_tracker
+          ];
+  
+        console.log('Location is : ' + routeWithLoadTracker.locations[i].customerDetails.location_tracker + ' Going to : ' + routeWithLoadTracker.locations[i + 1].customerDetails.location_tracker)
+  
+        total_distance += calculate_distance;
+      }
+  
+      routeWithLoadTracker.locations[i].customerDetails.distance = calculate_distance;
+      routeWithLoadTracker.locations[i].customerDetails.total_distance = total_distance;
+  
+      console.log('Distance to forward:' + i + ' ' + calculate_distance);
+      console.log('Total is:' + i + ' ' + total_distance);
+    }
+  
+    // Set the total_distance for the first location to 0
+    routeWithLoadTracker.locations[0].customerDetails.distance = 0;
+    routeWithLoadTracker.locations[0].customerDetails.total_distance = 0;
+  }
+  
+  
+
+function displayTable(routeData, routeNumber) {
+    const pillsTab = document.getElementById("pills-tab");
+    const pillsTabContent = document.getElementById("pills-tabContent");
+  
+    // Create the tab for the route
+    const tabItem = document.createElement("li");
+    tabItem.classList.add("nav-item");
+    tabItem.innerHTML = `
+      <button class="nav-link${routeNumber === 1 ? " active" : ""}" id="pills-tab-${routeNumber}" data-bs-toggle="pill" data-bs-target="#pills-route-${routeNumber}" type="button" role="tab" aria-controls="pills-route-${routeNumber}" aria-selected="${routeNumber === 1 ? "true" : "false"}">Truck ${routeNumber}</button>
+    `;
+    pillsTab.appendChild(tabItem);
+  
+    // Create the tab content for the route
+    const tabContent = document.createElement("div");
+    tabContent.classList.add("tab-pane", "fade");
+    if (routeNumber === 1) {
+      tabContent.classList.add("show", "active");
+    }
+    tabContent.id = `pills-route-${routeNumber}`;
+    tabContent.setAttribute("role", "tabpanel");
+    tabContent.setAttribute("aria-labelledby", `pills-tab-${routeNumber}`);
+  
+    const table = document.createElement("table");
+    table.classList.add("table", "table-hover");
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Location</th>
+          <th scope="col">Coordinates</th>
+          <th scope="col">Total load carry (kg)</th>
+          <th scope="col">Distance travelled (km)</th>
+          <th scope="col">Total distance travelled (km)</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${routeData.locations
+          .map(
+            (location, index) => `
+              <tr>
+                <th scope="row">${index}</th>
+                <td style="max-width: 300px;">[${
+                  location.customerDetails.location_tracker === 0
+                    ? "Depot"
+                    : location.customerDetails.location_tracker === 31
+                    ? "Landfill"
+                    : "Customer " + location.customerDetails.location_tracker 
+                }] ${location.customerDetails.address}</td>
+                <td>${location.customerDetails.coordinates.x}, ${
+              location.customerDetails.coordinates.y
+            }</td>
+                <td>${location.load_tracker}</td>
+                <td>${ parseFloat(location.customerDetails.distance).toFixed(2) || 0}</td>
+                <td>${ parseFloat(location.customerDetails.total_distance).toFixed(2) || 0}</td>
+              </tr>
+            `
+          )
+          .join("")}
+      </tbody>
+    `;
+  
+    tabContent.appendChild(table);
+    pillsTabContent.appendChild(tabContent);
+  }
+  
 // Function to fetch the distance matrix and display it in a table
 function displayDistanceMatrix() {
     // Fetch the data from Input_Data.json
