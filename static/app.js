@@ -33,31 +33,78 @@
         `;
 
         try {
-            // Make a request to the FastAPI server to trigger the model training process
-            const response = await fetch('/train_model', {
-                method: 'GET',
-            });
+          // Make a request to the FastAPI server to trigger the distance matrix calculation process
+          const response = await fetch('/train_model', {
+              method: 'GET',
+          });
+      
+          // Display an alert if the response is true (indicating the process is done)
+          if (response.ok) {
+              // Update the modal body with the success message
+              addressModalBody.innerHTML = `<p>Distance matrix calculation process has finished.</p>`;
+      
+              // Update the modal body with a button to train the model
+              changeButton.innerHTML = `<button class="btn btn-primary" id="train-model">Train model</button>`;
+      
+              // Add click event listener to the "Train model" button
+              const trainModelButton = document.getElementById('train-model');
+              trainModelButton.addEventListener('click', async () => {
+                  try {
+                      // Show a loading spinner while waiting for the trainResponse
+                      changeButton.innerHTML = `
+                          <button class="btn btn-primary" type="button" disabled>
+                              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                              Loading...
+                          </button>
+                      `;
 
-            // Display an alert if the response is true (indicating process is done)
-            if (response.ok) {
-                // Update the modal body with the success message
-                addressModalBody.innerHTML = `
-                <p>Distance matrix calculation process has finished.</p>
-                `;
-
-                changeButton.innerHTML = `
-                <button class="btn btn-primary">Train model</button>
-                `
-            } else {
-                // Update the modal body with an error message
-                addressModalBody.innerHTML = '<p>Error occurred while running the model.</p>';
-            }
-        } catch (error) {
-            console.error('Error occurred while running the model:', error);
-            // Update the modal body with an error message
-            addressModalBody.innerHTML = '<p>Error occurred while running the model.</p>';
-        }
+                      addressModalBody.innerHTML = `
+                      <div class="d-flex justify-content-center">
+                          <p>Training Model</p>
+                      </div>
+                          <div class="d-flex justify-content-center">
+                              <div class="spinner-border" role="status">
+                                  <span class="visually-hidden">Loading...</span>
+                              </div>
+                          </div>
+                  `;
+      
+                      // Make a request to the FastAPI server to trigger the model training process
+                      const trainResponse = await fetch('/run_model', {
+                          method: 'GET',
+                      });
+      
+                      // Display an alert if the model training response is ok (indicating the process is done)
+                      if (trainResponse.ok) {
+                          // Update the modal body with the success message
+                          addressModalBody.innerHTML = `<p>Model training process has finished.</p>`;
+      
+                          // Update the modal body with a button to view the result
+                          changeButton.innerHTML = `<a class="btn btn-primary" id="view-result" href="http://127.0.0.1:8000/dashboard">View result</a>`;
+                      } else {
+                          // Update the modal body with an error message if model training response is not ok
+                          addressModalBody.innerHTML = '<p>Error occurred while running the model training process.</p>';
+                      }
+                  } catch (error) {
+                      console.error('Error occurred while running the model training process:', error);
+                      // Update the modal body with an error message
+                      addressModalBody.innerHTML = '<p>Error occurred while running the model training process.</p>';
+                  }
+              });
+          } else {
+              // Update the modal body with an error message if the distance matrix calculation response is not ok
+              addressModalBody.innerHTML = '<p>Error occurred while running the distance matrix calculation process.</p>';
+          }
+      } catch (error) {
+          console.error('Error occurred while running the distance matrix calculation process:', error);
+          // Update the modal body with an error message
+          addressModalBody.innerHTML = '<p>Error occurred while running the distance matrix calculation process.</p>';
+      }
+      
     });
+
+
+
 
         
     

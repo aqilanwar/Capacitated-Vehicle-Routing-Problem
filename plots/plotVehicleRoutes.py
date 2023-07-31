@@ -77,6 +77,7 @@ def plotRoute(route, csv_title):
     plt.ylabel("Y - Coordinate")
     plt.title(csv_title)
     plt.savefig(f"./figures/Route_{csv_title}.png")
+    plt.savefig(f"./static/results/Result_Route.png")
 
 if __name__ == "__main__":
     sample_route = [1, 2, 4, 25, 24, 22, 23, 17, 13, 10, 15, 19, 18, 12, 14, 16, 11, 9, 6, 8, 7, 3, 5, 21, 20]

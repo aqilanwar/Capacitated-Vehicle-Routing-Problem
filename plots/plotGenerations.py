@@ -45,6 +45,7 @@ def plotFitnessFromCSV(csv_file_path):
     plt.ylabel("Min distance")
     plt.title(csv_title)
     plt.savefig(f"./figures/Fitness_{csv_title}.png")
+    plt.savefig(f"./static/results/Result_Fitness.png")
     # plt.show()
 
 
